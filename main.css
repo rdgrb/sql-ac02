@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-text: #fff;
+    --secondary-text: rgba(255, 255, 255, 0.7);
+    --button-primary: rgba(255, 255, 255, 0.08);
+    --bg-primary: #303030;
+    --bg-secondary: #424242;
+
+}
+
+body {
+    background: var(--bg-primary);
+}
+
+h1 {
+    color: var(--primary-text);
+}
+
+span {
+    color: var(--secondary-text);
+}
+
+* {
+    font-family: "Poppins"
+}
+
+.container,
+#conteudo {
+    height: 100vh;
+}
+
+#toolbar {
+    align-items: center;
+    background: var(--bg-secondary);
+    padding: 3px 10px;
+
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
+.toolbar-button {
+    color: var(--primary-text);
+    -webkit-app-region: no-drag;
+
+    transition: color 0.2s ease;
+}
+
+.toolbar-button:hover {
+    color: var(--secondary-text);
+}
