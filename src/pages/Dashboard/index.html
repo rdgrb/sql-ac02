@@ -13,7 +13,7 @@
     
     <link rel="stylesheet" href="index.css">
   </head>
-  <body>
+  <body onload="onLoad()">
     <nav id="toolbar" class="d-flex justify-content-between">
       <span id="toolbar-title">SQL - Atividade Complementar 02</span>
       
@@ -36,63 +36,53 @@
         <div class="row">
 
           <div class="col-4">
-            <div class="card border-0 mb-3 w-100">
+            <div class="card z-depth-1 border-0 mb-3 h-100 w-100">
               <div class="card-header bg-card-header text-center d-flex justify-content-between align-items-center">
-                SQL - CONEXÃO ATIVA
-
-                <a href="#" data-toggle="modal" data-target="#modalConexoes">
-                  <span class="material-icons mb-0">
-                    settings
-                  </span>
-                </a>
+                SQL - CONFIGURAÇÃO ATIVA
               </div>
-              <div class="card-body bg-card-body text-center">
-                <p class="card-text">Nenhuma conexão realizada.</p>
+              <div id="conexao-ativa" class="card-body bg-card-body text-center">
+                <div class="d-flex justify-content-center align-items-center w-100 h-100">
+                  <p class="card-text">Nenhuma conexão adicionada.</p>
+                </div>
+
               </div>
               <div class="card-footer bg-card-footer">
-                <button onclick="abrirFormAddConexao()" class="btn btn-success btn-block text-uppercase">Conectar</button>
+                <button id="btnConfig" onclick="checkSQLConfigClick()" class="btn btn-success btn-block text-uppercase">ADICIONAR</button>
               </div>
             </div>
           </div>
 
           <div class="col">
             <div class="row">
-              <div class="card border-0 w-100">
+              <div class="card z-depth-1 border-0 w-100">
                 <div class="card-header bg-card-header text-uppercase">
                   Adicionar arquivo de entrada
                 </div>
                 <form>
                   <div class="card-body bg-card-body">
                     <div class="form-group">
-                      <input type="file" class="w-100">
+                      <input id="inputFile" type="file" class="w-100">
                     </div>
                   </div>
                   <div class="card-footer bg-card-footer text-right">
-                    <button  class="btn btn-custom text-uppercase">Enviar registro de dados para o BD</button>
+                    <button id="btnSendFile" disabled class="btn btn-custom text-uppercase">Enviar registro de dados para o BD</button>
                   </div>
                 </form>
               </div>
             </div>
 
             <div class="row mt-3">
-              <div class="card border-0 w-100">
+              <div class="card z-depth-1 border-0 w-100">
                 <div class="card-header bg-card-header text-uppercase">
-                  <div class="d-flex justify-content-between align-items-center">
-                    Comando de Consulta
-
-                    <div>
-                      <img src="../../../node_modules/material-design-icons/action/drawable-hdpi/ic_report_problem_white_18dp.png" alt="">
-                      <small>Apenas SELECT comuns</small>
-                    </div>
-                  </div>
+                  Comando de Consulta
                 </div>
 
-                <form>
+                <form id="formQuery" action="#" onsubmit="sendQuery();">
                   <div class="card-body bg-card-body">
-                    <input type="text" class="form-control" placeholder="SELECT * FROM Tabela">
+                    <input id="inputQuery" type="text" class="form-control" placeholder="SELECT * FROM Tabela">
                   </div>
                   <div class="card-footer bg-card-footer text-right">
-                    <button  class="btn btn-custom text-uppercase">EXECUTAR CONSULTA</button>
+                    <button id="btnSendQuery" disabled class="btn btn-custom text-uppercase">EXECUTAR CONSULTA</button>
                   </div>
                 </form>
                 
@@ -102,66 +92,34 @@
         </div>
       </div>
 
-      <div class="container">
-        <div class="row mt-3 mb-5">
-          <div class="card border-0 w-100">
-              <div class="card-header bg-card-header text-uppercase">
-                  CONSOLE
-              </div>
-              <div class="card-body bg-card-body">
-                  <div id="console-erro" class="pt-1 pl-2 pr-2">
-                      <ul class="list-unstyled">
-                          <li>>> Aguardando ação...</li>
-                      </ul>
-                  </div>
-              </div>
+      <div class="container mt-3 mb-5">
+        <div class="row pl-3">
+          <div class="card z-depth-2 border-0 w-100">
+            <div class="card-header bg-card-header text-uppercase">
+                CONSOLE
+            </div>
+            <div class="card-body bg-card-body">
+                <div class="pt-1 pl-2 pr-2">
+                    <ul id="log-console" class="list-unstyled">
+                        <li>>> Aguardando</li>
+                    </ul>
+
+                    <table id="log-datatable" class="table table-bordered d-none">
+                      <caption id="log-table-title">Dados da tabela requisitada</caption>
+                      <thead id="log-table-header"></thead>
+                      <tbody id="log-table-rows"></tbody>
+                    </table>
+                </div>
+            </div>
           </div>
+  
         </div>
       </div>
     </div>
     
-    <div class="modal fade" id="modalConexoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-modal">
-          <div class="modal-header border-0">
-            <h5 class="modal-title text-uppercase">Sua conexão atual</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-              <ul class="list-unstyled">
-                <li class="d-flex justify-content-between">
-                  <span>Servidor: </span>
-                  <span>localhost</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Usuário (SQL): </span>
-                  <span>sa</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                  <span>Senha (SQL): </span>
-                  <span>******</span>
-                </li>
-
-                <hr class="hr-divider">
-                <li class="d-flex justify-content-between">
-                  <span>Banco de Dados: </span>
-                  <span>DB_AC02</span>
-                </li>
-              </ul>
-          </div>
-          <div class="modal-footer border-0">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">MODIFICAR</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">FECHAR</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
     <script src="../../../renderer.js"></script>
     <script src="index.js"></script>
     <script src="../../controllers/toolbar-controller.js"></script>
+    <script src="../../controllers/sql-controller.js"></script>
   </body>
 </html>

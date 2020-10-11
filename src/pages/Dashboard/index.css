@@ -12,6 +12,7 @@
 .bg-modal {
     background-color: var(--bg-secondary);
     color: var(--secondary-text);
+    border-radius: 0px;
 }
 
 .bg-modal {
@@ -19,7 +20,7 @@
 }
 
 
-#console-erro {
+#log-console {
     background-color: var(--bg-secondary);
     height: 170px;
     overflow-y: auto;
@@ -27,4 +28,23 @@
     border: 0.5px;
     border-style: solid;
     border-color: var(--divider);
+}
+
+.card,
+.card-header,
+.card-footer {
+    border-radius: 0 !important;
+}
+
+
+#log-table-columns {
+    color: var(--secondary-text);
+}
+
+#log-table-rows {
+    color: var(--primary-text);
+}
+
+td {
+    color: var(--primary-text);
 }

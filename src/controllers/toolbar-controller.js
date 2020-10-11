@@ -14,7 +14,6 @@ function executarToolbar(acao) {
     const remote = require('electron').remote;
 
     let janela = remote.getCurrentWindow();
-    console.log(janela.getTitle());
     switch (acao) {
         case "maximizar":
             janela.isMaximized() ? janela.unmaximize() : janela.maximize()

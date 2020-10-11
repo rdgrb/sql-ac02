@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 function createWindow() {
@@ -18,9 +18,13 @@ function createWindow() {
   mainWindow.setMenuBarVisibility(false);
   mainWindow.loadFile('src/pages/Dashboard/index.html');
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools();
+
+  ipcMain.on("request-connection-update", (event, arg) => {
+    mainWindow.webContents.send("request-connection-update", arg);
+  })
 }
+
 
 app.whenReady().then(() => {
   createWindow()
