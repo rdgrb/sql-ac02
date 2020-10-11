@@ -11,6 +11,7 @@
 
 body {
     background: var(--bg-primary);
+    overflow: hidden;
 }
 
 h1 {
@@ -41,6 +42,7 @@ span {
 
 .toolbar-button {
     color: var(--primary-text);
+    text-decoration: none;
     -webkit-app-region: no-drag;
 
     transition: color 0.2s ease;

@@ -3,16 +3,20 @@ const path = require('path')
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    minWidth: 850,
+    minHeight: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      enableRemoteModule: true,
     },
     frame: false,
   })
 
+  mainWindow.maximize();
+
   mainWindow.setMenuBarVisibility(false);
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('src/pages/Dashboard/index.html');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
