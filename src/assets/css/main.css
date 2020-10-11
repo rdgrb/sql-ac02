@@ -6,7 +6,14 @@
     --button-primary: rgba(255, 255, 255, 0.08);
     --bg-primary: #303030;
     --bg-secondary: #424242;
+    --bg-secondary-light: #424242f8;
 
+    --button-active: #ffffff;
+    --button-hover: rgba(255, 255, 255, 0.08);
+    --button-disabled: rgba(255, 255, 255, 0.3);
+    --button-disabledBG: rgba(255, 255, 255, 0.12);
+
+    --divider: rgba(255, 255, 255, 0.12);
 }
 
 body {
@@ -14,21 +21,23 @@ body {
     overflow: hidden;
 }
 
+.container-fluid {
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
 h1 {
     color: var(--primary-text);
 }
 
-span {
+#toolbar,
+.modal-title,
+.card span {
     color: var(--secondary-text);
 }
 
 * {
     font-family: "Poppins"
-}
-
-.container,
-#conteudo {
-    height: 100vh;
 }
 
 #toolbar {
@@ -50,4 +59,23 @@ span {
 
 .toolbar-button:hover {
     color: var(--secondary-text);
+}
+
+.btn-custom {
+    background: var(--button-active);
+    transition: background 0.5s ease;
+}
+
+.btn-custom:hover {
+    background: var(--button-hover);
+    color: var(--primary-text);
+}
+
+.btn-custom:disabled {
+    background: var(--button-disabled);
+    color: var(--primary-text);
+}
+
+.hr-divider {
+    background-color: var(--divider);
 }

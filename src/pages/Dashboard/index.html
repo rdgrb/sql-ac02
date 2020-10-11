@@ -31,8 +31,136 @@
       </div>
     </nav>
 
+    <div class="container-fluid">
+      <div class="container mt-3">
+        <div class="row">
+
+          <div class="col-4">
+            <div class="card border-0 mb-3 w-100">
+              <div class="card-header bg-card-header text-center font-weight-bold d-flex justify-content-between align-items-center">
+                SQL - CONEXÃO ATIVA
+
+                <a href="#" data-toggle="modal" data-target="#modalConexoes">
+                  <span class="material-icons mb-0">
+                    settings
+                  </span>
+                </a>
+              </div>
+              <div class="card-body bg-card-body text-center">
+                <p class="card-text">Nenhuma conexão realizada.</p>
+              </div>
+              <div class="card-footer bg-card-footer">
+                <button class="btn btn-success btn-block text-uppercase">Conectar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="row">
+              <div class="card border-0 w-100">
+                <div class="card-header bg-card-header text-uppercase font-weight-bold">
+                  Adicionar arquivo de entrada
+                </div>
+                <form>
+                  <div class="card-body bg-card-body">
+                    <div class="form-group">
+                      <input type="file" class="w-100">
+                    </div>
+                  </div>
+                  <div class="card-footer bg-card-footer text-right">
+                    <button class="btn btn-custom text-uppercase">Enviar registro de dados para o BD</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="card border-0 w-100">
+                <div class="card-header bg-card-header text-uppercase">
+                  <div class="d-flex justify-content-between align-items-center">
+                    Comando de Consulta
+
+                    <div>
+                      <img src="../../../node_modules/material-design-icons/action/drawable-hdpi/ic_report_problem_white_18dp.png" alt="">
+                      <small>Apenas SELECT comuns</small>
+                    </div>
+                  </div>
+                </div>
+
+                <form>
+                  <div class="card-body bg-card-body">
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="card-footer bg-card-footer text-right">
+                    <button class="btn btn-custom text-uppercase">EXECUTAR CONSULTA</button>
+                  </div>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-3 mb-5">
+          <div class="card border-0 w-100">
+              <div class="card-header bg-card-header text-uppercase">
+                  CONSOLE
+              </div>
+              <div class="card-body bg-card-body">
+                  <div id="console-erro" class="border p-2">
+                      <ul class="list-unstyled">
+                          <li>>> Aguardando ação</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <script src="./renderer.js"></script>
+    <div class="modal fade" id="modalConexoes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-modal">
+          <div class="modal-header border-0">
+            <h5 class="modal-title text-uppercase">Sua conexão atual</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <ul class="list-unstyled">
+                <li class="d-flex justify-content-between">
+                  <span>Servidor: </span>
+                  <span>localhost</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <span>Usuário (SQL): </span>
+                  <span>sa</span>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <span>Senha (SQL): </span>
+                  <span>******</span>
+                </li>
+
+                <hr class="hr-divider">
+                <li class="d-flex justify-content-between">
+                  <span>Banco de Dados: </span>
+                  <span>DB_AC02</span>
+                </li>
+              </ul>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">MODIFICAR</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">FECHAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="../../../renderer.js"></script>
     <script src="index.js"></script>
     <script src="../../controllers/toolbar-controller.js"></script>
   </body>

@@ -2,6 +2,30 @@
     top: 1px;
 }
 
-.container-fluid {
+.bg-card-body {
+    background-color: var(--bg-secondary-light);
+    color: var(--primary-text);
+}
+
+.bg-card-header,
+.bg-card-footer,
+.bg-modal {
+    background-color: var(--bg-secondary);
+    color: var(--primary-text);
+}
+
+.form-control {
+    background-color: var(--bg-secondary);
+    color: var(--secondary-text);
+    border: none;
+}
+
+.form-control:focus {
+    background-color: var(--bg-secondary);
+    color: var(--primary-text);
+}
+
+#console-erro {
+    height: 170px;
     overflow-y: scroll;
 }
