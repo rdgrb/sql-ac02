@@ -79,3 +79,18 @@ h1 {
 .hr-divider {
     background-color: var(--divider);
 }
+
+label {
+    color: var(--primary-text)
+}
+
+.form-control {
+    background-color: var(--bg-secondary);
+    color: var(--secondary-text);
+    border: none;
+}
+
+.form-control:focus {
+    background-color: var(--bg-secondary);
+    color: var(--primary-text);
+}

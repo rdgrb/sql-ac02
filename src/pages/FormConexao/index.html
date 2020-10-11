@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    <title>WindowConectar</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <nav id="toolbar" class="d-flex justify-content-between">
+      <span id="toolbar-title">Conexão com o SQL</span>
+      
+      <div>
+        <a href="#" onclick="minimizar()" class="toolbar-button">
+            <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_unfold_less_white_24dp.png" alt="">
+         </a>
+        <a href="#" onclick="maximizar()" class="toolbar-button">
+            <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_fullscreen_white_24dp.png" alt="">
+         </a>
+        <a href="#" onclick="fechar()" class="toolbar-button">
+           <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_close_white_24dp.png" alt="">
+        </a>
+       
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="container mt-3">
+            <div class="row justify-content-center p-2">
+              <form action="#" id="formConexao" onsubmit="conectarSQL(); return false">
+                <div class="form-group row">
+                    <label for="inputServidor" class="col-sm-2 col-form-label">Servidor</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputServidor" placeholder="Opcional, padrão: localhost">
+                    </div>
+                </div>
+    
+                
+                <div class="form-group row">
+                    <label for="inputUsuarioSQL" class="col-sm-2 col-form-label">Usuário (SQL) *</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputUsuarioSQL" placeholder="sa">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputSenhaSQL" class="col-sm-2 col-form-label">Senha (SQL) *</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputSenhaSQL" placeholder="123456">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="inputDB" class="col-sm-2 col-form-label">Nome do Banco Dados *</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputDB" placeholder="db_name">
+                    </div>
+                </div>
+
+                <div class="form-group row justify-content-center">
+                    <button type="submit" class="btn btn-success text-uppercase">Conectar</button>  
+                </div>
+              </form>
+            </div>  
+        </div>
+    </div>
+
+
+    <script src="../../../renderer.js"></script>
+    <script src="index.js"></script>
+    <script src="../../controllers/toolbar-controller.js"></script>
+  </body>
+</html>

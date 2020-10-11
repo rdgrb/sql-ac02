@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
 
-    <title>SQL - Atividade Complementar 02</title>
+    <title>WindowDashboard</title>
 
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/main.css">
@@ -37,7 +37,7 @@
 
           <div class="col-4">
             <div class="card border-0 mb-3 w-100">
-              <div class="card-header bg-card-header text-center font-weight-bold d-flex justify-content-between align-items-center">
+              <div class="card-header bg-card-header text-center d-flex justify-content-between align-items-center">
                 SQL - CONEXÃO ATIVA
 
                 <a href="#" data-toggle="modal" data-target="#modalConexoes">
@@ -50,7 +50,7 @@
                 <p class="card-text">Nenhuma conexão realizada.</p>
               </div>
               <div class="card-footer bg-card-footer">
-                <button class="btn btn-success btn-block text-uppercase">Conectar</button>
+                <button onclick="abrirFormAddConexao()" class="btn btn-success btn-block text-uppercase">Conectar</button>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
           <div class="col">
             <div class="row">
               <div class="card border-0 w-100">
-                <div class="card-header bg-card-header text-uppercase font-weight-bold">
+                <div class="card-header bg-card-header text-uppercase">
                   Adicionar arquivo de entrada
                 </div>
                 <form>
@@ -68,7 +68,7 @@
                     </div>
                   </div>
                   <div class="card-footer bg-card-footer text-right">
-                    <button class="btn btn-custom text-uppercase">Enviar registro de dados para o BD</button>
+                    <button  class="btn btn-custom text-uppercase">Enviar registro de dados para o BD</button>
                   </div>
                 </form>
               </div>
@@ -89,10 +89,10 @@
 
                 <form>
                   <div class="card-body bg-card-body">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="SELECT * FROM Tabela">
                   </div>
                   <div class="card-footer bg-card-footer text-right">
-                    <button class="btn btn-custom text-uppercase">EXECUTAR CONSULTA</button>
+                    <button  class="btn btn-custom text-uppercase">EXECUTAR CONSULTA</button>
                   </div>
                 </form>
                 
@@ -109,9 +109,9 @@
                   CONSOLE
               </div>
               <div class="card-body bg-card-body">
-                  <div id="console-erro" class="border p-2">
+                  <div id="console-erro" class="pt-1 pl-2 pr-2">
                       <ul class="list-unstyled">
-                          <li>>> Aguardando ação</li>
+                          <li>>> Aguardando ação...</li>
                       </ul>
                   </div>
               </div>
