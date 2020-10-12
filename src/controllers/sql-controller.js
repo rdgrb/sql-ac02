@@ -4,7 +4,7 @@ function saveConnectionConfig(config) {
     localStorage.setItem("sql-config", JSON.stringify(config));
 }
 
-async function queryData(config, sqlQuery) {
+async function sendRequest(config, sqlQuery) {
     try {
         let pool = await sql.connect(config);
         let resultado = await pool.request()
@@ -12,6 +12,6 @@ async function queryData(config, sqlQuery) {
 
         return resultado;
     } catch (erro) {
-        console.log(erro);
+        return erro;
     }
 }

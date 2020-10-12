@@ -18,8 +18,6 @@ function createWindow() {
   mainWindow.setMenuBarVisibility(false);
   mainWindow.loadFile('src/pages/Dashboard/index.html');
 
-  mainWindow.webContents.openDevTools();
-
   ipcMain.on("request-connection-update", (event, arg) => {
     mainWindow.webContents.send("request-connection-update", arg);
   })

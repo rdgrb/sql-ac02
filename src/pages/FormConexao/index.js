@@ -64,7 +64,7 @@ function getDatabases() {
             configObj.database = "master";
 
             const query = "SELECT * FROM sys.databases WHERE name NOT IN ('master', 'tempdb', 'model', 'msdb')";
-            queryData(configObj, query).then(response => {
+            sendRequest(configObj, query).then(response => {
                 response.recordset.forEach(database => {
                     $("#inputDatabase").append(`
                         <option value="${database.name}">${database.name}</option>
@@ -85,7 +85,6 @@ function updateDashboard(config) {
 
     let data = {
         configObject: config,
-        mensagem: `Conexão estabelecida com ${config.database}`,
     };
 
     ipcRenderer.send("request-connection-update", data);
