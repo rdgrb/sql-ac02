@@ -50,33 +50,53 @@ function clearValidation() {
     $("#inputDatabase, #inputUsername, #inputPassword").removeClass("is-invalid");
 }
 
+function clearDatabaseList() {
+    $("#inputDatabase").html(`
+        <option selected value="default">Nenhum banco de dados selecionado</option>
+        <option id="optionLoading" class="d-none" value="loadingDefault">Carregando...</option>
+    `);
+}
+
 let alreadyListed = false;
 function getDatabases() {
-    if (!alreadyListed) {
-        configObj.server = $("#inputServer").val("") ? "localhost" : $("#inputServer").val();
-        configObj.user = $("#inputUsername").val();
-        configObj.password = $("#inputPassword").val();
+    configObj.server = $("#inputServer").val("") ? "localhost" : $("#inputServer").val();
+    configObj.user = $("#inputUsername").val();
+    configObj.password = $("#inputPassword").val();
 
-        if (configObj.user !== "" && configObj.password !== "") {
-            $("#inputDatabase").val("loadingDefault");
-            $("#optionLoading").removeClass("d-none");
+    if (configObj.user !== "" && configObj.password !== "") {
+        $("#inputDatabase").val("loadingDefault");
+        $("#optionLoading").removeClass("d-none");
 
-            configObj.database = "master";
+        clearDatabaseList();
 
-            const query = "SELECT * FROM sys.databases WHERE name NOT IN ('master', 'tempdb', 'model', 'msdb')";
-            sendRequest(configObj, query).then(response => {
+        configObj.database = "master";
+
+        const query = "SELECT * FROM sys.databases WHERE name NOT IN ('master', 'tempdb', 'model', 'msdb')";
+        sendRequest(configObj, query).then(response => {
+            console.log(response);
+            if (!isResponseAnError(response)) {
                 response.recordset.forEach(database => {
                     $("#inputDatabase").append(`
-                        <option value="${database.name}">${database.name}</option>
-                    `);
+                            <option value="${database.name}">${database.name}</option>
+                        `);
                 });
-
-                alreadyListed = true;
 
                 $("#inputDatabase").val("default");
                 $("#optionLoading").addClass("d-none");
-            })
-        }
+            }
+        })
+    }
+}
+
+function isResponseAnError(response) {
+    if (response.code) {
+        $("#errorTitle").html(`ERRO - <span class="text-warning">${response.code}</span>`)
+        $("#errorText").html(`Falha ao recuperar lista de Databases: <br> ${response.message}`);
+        $('#errorModal').modal();
+
+        return true;
+    } else {
+        return false;
     }
 }
 

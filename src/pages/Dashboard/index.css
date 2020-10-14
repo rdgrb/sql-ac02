@@ -24,8 +24,8 @@ a:hover {
     border-radius: 0px;
 }
 
-.bg-modal {
-    color: var(--primary-text);
+.table-header {
+    background-color: var(--bg-secondary);
 }
 
 #log-console {
@@ -51,6 +51,19 @@ a:hover {
 
 #log-table-rows {
     color: var(--primary-text);
+}
+
+table.table {
+    border: 1px solid var(--divider);
+    margin-top: 20px;
+}
+
+table.table>thead>tr>th {
+    border: 1px solid var(--divider);
+}
+
+table.table>tbody>tr>td {
+    border: 1px solid var(--divider);
 }
 
 td {

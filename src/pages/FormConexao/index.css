@@ -1,0 +1,9 @@
+.bg-modal {
+    color: var(--primary-text);
+    background-color: var(--bg-secondary);
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}

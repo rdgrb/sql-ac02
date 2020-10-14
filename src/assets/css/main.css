@@ -124,3 +124,16 @@ label {
     -webkit-box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22) !important;
     box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22) !important;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-secondary-light);
+    /* //-webkit-box-shadow: inset 0 0 6px var(--primary-text); */
+}

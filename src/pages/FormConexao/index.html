@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <nav id="toolbar" class="d-flex justify-content-between">
+    <nav id="toolbar" class="d-flex justify-content-between z-depth-1">
       <span id="toolbar-title">Adicionar config de Conexão</span>
       
       <div>
@@ -66,13 +66,31 @@
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <button type="submit" class="btn btn-success text-uppercase">Conectar</button>  
+                    <button type="submit" class="btn btn-success text-uppercase">Salvar Config</button>  
                 </div>
               </form>
             </div>  
         </div>
     </div>
 
+    <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content bg-modal">
+          <div class="modal-header">
+            <h5 class="modal-title bg-card-body" id="errorTitle">ERRO</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body bg-card-body">
+            <p id="errorText">Erro</p>
+          </div>
+          <div class="modal-footer bg-card-body">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="../../../renderer.js"></script>
     <script src="index.js"></script>

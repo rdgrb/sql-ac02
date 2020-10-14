@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
+if (require('electron-squirrel-startup')) return;
+
 function createWindow() {
   const mainWindow = new BrowserWindow({
     minWidth: 850,
@@ -35,3 +37,5 @@ app.whenReady().then(() => {
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
+
+process.env.NODE_ENV = "production";

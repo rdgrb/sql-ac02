@@ -128,6 +128,7 @@ function sendQuery() {
                 for (let i = 0; i < columnsList.length; i++) {
                     const cell = headerRow.insertCell(i);
                     cell.innerHTML = columnsList[i];
+                    cell.className = "table-header";
                 }
 
                 const dataList = response.recordset;
@@ -137,6 +138,9 @@ function sendQuery() {
 
                     for (let j = 0; j < columnsList.length; j++) {
                         let cell = row.insertCell(j);
+                        if (j == 0) {
+                            cell.className = "font-weight-bold";
+                        }
                         cell.innerHTML = columnsList[j][1];
                     }
                 }
@@ -214,7 +218,6 @@ function sendData() {
     `;
 
     for (let i = 0; i < objList.length; i++) {
-        console.log(objList[i]);
         insertQuery += `(${getQueryFormattedValue(objList[i], false)}`;
 
         if (i === objList.length - 1) {
@@ -249,6 +252,11 @@ function isResponseAnError(response) {
                     <li>[LOG] <span class="text-warning"> A conexão com o SQL expirou. Reabra a aplicação. </span></li>
                 `)
 
+                return true;
+            default:
+                $("#log-console").append(`
+                    <li>[LOG] <span class="text-danger"> ERRO ${response.code} </span> ${response.message}</li>
+                `)
                 return true;
         }
     } else {
