@@ -92,12 +92,16 @@ function createFormWindow() {
     const remote = require('electron').remote;
     const BrowserWindow = remote.BrowserWindow;
 
+    const path = require('path')
+    const rootPath = require('electron-root-path').rootPath;
+
     const formWindow = new BrowserWindow({
         width: 500,
         height: 510,
         center: true,
         frame: false,
         resizable: false,
+        icon: path.join(rootPath, 'src/assets/icon/icon.ico'),
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,

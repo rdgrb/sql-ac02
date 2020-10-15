@@ -1,101 +1,104 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
 
-    <title>Adicionar configuração de Conexão</title>
+<head>
+  <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/main.css">
+  <title>Adicionar configuração de Conexão</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
-    
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <nav id="toolbar" class="d-flex justify-content-between z-depth-1">
-      <span id="toolbar-title">Adicionar config de Conexão</span>
-      
-      <div>
-        <a href="#" onclick="minimizar()" class="toolbar-button">
-            <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_unfold_less_white_24dp.png" alt="">
-         </a>
-        <a href="#" onclick="fechar()" class="toolbar-button">
-           <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_close_white_24dp.png" alt="">
-        </a>
-      </div>
-    </nav>
+  <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
 
-    <div class="container-fluid">
-        <div class="container mt-3">
-            <div class="row justify-content-center p-2">
-              <form action="#" id="formConnection" onsubmit="saveData(); return false">
-                <div class="form-group row">
-                    <label for="inputServer" class="col-sm-2 col-form-label">Servidor</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputServer" placeholder="Opcional, padrão: localhost">
-                    </div>
-                </div>
-    
-                
-                <div class="form-group row">
-                    <label for="inputUsername" class="col-sm-2 col-form-label">Usuário (SQL) *</label>
-                    <div class="col-sm-10">
-                        <input type="text" onfocusout="getDatabases()" class="form-control" id="inputUsername" placeholder="sa">
-                    </div>
-                </div>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Senha (SQL) *</label>
-                    <div class="col-sm-10">
-                        <input type="password" onfocusout="getDatabases()" class="form-control" id="inputPassword" placeholder="123456">
-                    </div>
-                </div>
-                
-                <hr class="hr-divider">
+  <link rel="stylesheet" href="index.css">
+</head>
 
-                <div class="form-group row">
-                    <label for="inputDatabase" class="col-sm-2 col-form-label">Banco de Dados *</label>
-                    <div class="col-sm-10">
-                        <select id="inputDatabase" class="form-control">
-                          <option selected value="default">Nenhum banco de dados selecionado</option>
-                          <option id="optionLoading" class="d-none" value="loadingDefault">Carregando...</option>
-                        </select>
-                    </div>
-                </div>
+<body>
+  <nav id="toolbar" class="d-flex justify-content-between z-depth-1">
+    <span id="toolbar-title">Adicionar config de Conexão</span>
 
-                <div class="form-group row justify-content-center">
-                    <button type="submit" class="btn btn-success text-uppercase">Salvar Config</button>  
-                </div>
-              </form>
-            </div>  
-        </div>
+    <div class="btn-group">
+      <button onclick="minimizar()" class="btn btn-sm rounded-0 toolbar-button">
+        <img src="../../assets/ic_minimizar_24dp.png" alt="Botão minimizar">
+      </button>
+      <button onclick="fechar()" id="btn-fechar" class="btn btn-sm rounded-0 toolbar-button">
+        <img src="../../assets/ic_fechar_24dp.png" alt="Botão fechar">
+      </button>
     </div>
+  </nav>
 
-    <div class="modal" id="errorModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-        <div class="modal-content bg-modal">
-          <div class="modal-header">
-            <h5 class="modal-title bg-card-body" id="errorTitle">ERRO</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <div class="container-fluid">
+    <div class="container mt-3">
+      <div class="row justify-content-center p-2">
+        <form action="#" id="formConnection" onsubmit="saveData(); return false">
+          <div class="form-group row">
+            <label for="inputServer" class="col-sm-2 col-form-label">Servidor</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputServer" placeholder="Opcional, padrão: localhost">
+            </div>
           </div>
-          <div class="modal-body bg-card-body">
-            <p id="errorText">Erro</p>
+
+
+          <div class="form-group row">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Usuário (SQL) *</label>
+            <div class="col-sm-10">
+              <input type="text" onfocusout="getDatabases()" class="form-control" id="inputUsername" placeholder="sa">
+            </div>
           </div>
-          <div class="modal-footer bg-card-body">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Senha (SQL) *</label>
+            <div class="col-sm-10">
+              <input type="password" onfocusout="getDatabases()" class="form-control" id="inputPassword"
+                placeholder="123456">
+            </div>
           </div>
-        </div>
+
+          <hr class="hr-divider">
+
+          <div class="form-group row">
+            <label for="inputDatabase" class="col-sm-2 col-form-label">Banco de Dados *</label>
+            <div class="col-sm-10">
+              <select id="inputDatabase" class="form-control">
+                <option selected value="default">Nenhum banco de dados selecionado</option>
+                <option id="optionLoading" class="d-none" value="loadingDefault">Carregando...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row justify-content-center">
+            <button type="submit" class="btn btn-success text-uppercase">Salvar Config</button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-    <script src="../../../renderer.js"></script>
-    <script src="index.js"></script>
-    <script src="../../controllers/sql-controller.js"></script>
+  <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content bg-modal">
+        <div class="modal-header">
+          <h5 class="modal-title bg-card-body" id="errorTitle">ERRO</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-card-body">
+          <p id="errorText">Erro</p>
+        </div>
+        <div class="modal-footer bg-card-body">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="../../controllers/toolbar-controller.js"></script>
-  </body>
+  <script src="../../../renderer.js"></script>
+  <script src="index.js"></script>
+  <script src="../../controllers/sql-controller.js"></script>
+
+  <script src="../../controllers/toolbar-controller.js"></script>
+</body>
+
 </html>

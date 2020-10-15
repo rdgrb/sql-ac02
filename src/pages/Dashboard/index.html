@@ -17,17 +17,16 @@
     <nav id="toolbar" class="d-flex justify-content-between z-depth-1">
       <span id="toolbar-title">SQL - Atividade Contínua 02</span>
       
-      <div>
-        <a href="#" onclick="minimizar()" class="toolbar-button">
-            <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_unfold_less_white_24dp.png" alt="">
-         </a>
-        <a href="#" onclick="maximizar()" class="toolbar-button">
-            <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_fullscreen_white_24dp.png" alt="">
-         </a>
-        <a href="#" onclick="fechar()" class="toolbar-button">
-           <img src="../../../node_modules/material-design-icons/navigation/drawable-mdpi/ic_close_white_24dp.png" alt="">
-        </a>
-       
+      <div class="btn-group">
+        <button onclick="minimizar()" class="btn btn-sm rounded-0 toolbar-button">
+          <img src="../../assets/ic_minimizar_24dp.png" alt="Botão minimizar">
+        </button>
+        <button onclick="maximizar()" class="btn btn-sm toolbar-button">
+          <img src="../../assets/ic_maximizar_24dp.png" alt="Botão maximizar">
+        </button>
+        <button onclick="fechar()" id="btn-fechar" class="btn btn-sm rounded-0 toolbar-button">
+          <img src="../../assets/ic_fechar_24dp.png" alt="Botão fechar">
+        </button>
       </div>
     </nav>
 
@@ -116,7 +115,7 @@
                 CONSOLE
                 <a href="#" onclick="clearConsole()">
                   LIMPAR
-                  <img src="../../../node_modules/material-design-icons/communication/drawable-hdpi/ic_clear_all_white_18dp.png" alt="Limpar console">
+                  <img src="../../assets/ic_limpar_18dp.png" alt="Limpar console">
                 </a>
             </div>
             <div class="card-body bg-card-body">
