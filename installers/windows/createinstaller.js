@@ -11,15 +11,15 @@ getInstallerConfig()
 function getInstallerConfig() {
     console.log('creating windows installer')
     const rootPath = path.join('./')
-    const outPath = path.join(rootPath, 'dist')
+    const outPath = path.join(rootPath, 'dist', 'win')
 
     return Promise.resolve({
-        appDirectory: path.join(outPath, 'app-win32-x64'),
-        authors: 'Rodrigo Ribeiro - 1903955',
+        appDirectory: path.join(outPath, 'AC02 - ADS 2B-win32-x64'),
+        authors: 'Rodrigo Ribeiro - RA: 1903955 (ADS 2B)',
         noMsi: true,
         outputDirectory: path.join(outPath, 'windows-installer'),
-        exe: 'sql_ac02.exe',
-        setupExe: 'setup_sqlac02.exe',
+        exe: 'AC02 - ADS 2B.exe',
+        setupExe: 'AC02-Setup.exe',
         setupIcon: path.join(rootPath, 'src', 'assets', 'icon', 'icon.ico')
     })
 }

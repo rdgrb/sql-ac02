@@ -58,6 +58,11 @@ label {
     transition: background 0.2s ease;
 }
 
+.toolbar-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .toolbar-button:hover {
     text-decoration: none;
     background-color: var(--bg-primary);
@@ -69,7 +74,8 @@ label {
 
 .btn-custom {
     background: var(--button-active);
-    transition: background 0.5s ease;
+    transition: all 0.1s ease;
+    transition-property: color, background;
 }
 
 .btn-custom:hover {

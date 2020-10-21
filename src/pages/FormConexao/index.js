@@ -53,7 +53,6 @@ function clearValidation() {
 function clearDatabaseList() {
     $("#inputDatabase").html(`
         <option selected value="default">Nenhum banco de dados selecionado</option>
-        <option id="optionLoading" class="d-none" value="loadingDefault">Carregando...</option>
     `);
 }
 
@@ -65,7 +64,7 @@ function getDatabases() {
 
     if (configObj.user !== "" && configObj.password !== "") {
         $("#inputDatabase").val("loadingDefault");
-        $("#optionLoading").removeClass("d-none");
+        $("#loadingModal").modal();
 
         clearDatabaseList();
 
@@ -82,7 +81,7 @@ function getDatabases() {
                 });
 
                 $("#inputDatabase").val("default");
-                $("#optionLoading").addClass("d-none");
+                $("#loadingModal").modal('hide');
             }
         })
     }
@@ -90,6 +89,8 @@ function getDatabases() {
 
 function isResponseAnError(response) {
     if (response.code) {
+        $("#loadingModal").modal('hide');
+
         $("#errorTitle").html(`ERRO - <span class="text-warning">${response.code}</span>`)
         $("#errorText").html(`Falha ao recuperar lista de Databases: <br> ${response.message}`);
         $('#errorModal').modal();

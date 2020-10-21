@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
 
-    <title>WindowDashboard</title>
+    <title>Painel de Controle</title>
 
     <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/main.css">
@@ -60,16 +60,22 @@
                 </div>
                 <form id="formFile" action="#" onsubmit="sendData(); return false;">
                   <div class="card-body bg-card-body">
-                    <div class="form-group d-flex justify-content-between align-items-center">
-                      <label id="lblFilePath" for="inputFile">Nenhum arquivo selecionado</label>
-                      <button type="button" id="btnChooseFile" onclick="openCSVFile();" class="btn btn-custom text-uppercase align-items-center">
-                        Escolher arquivo
-                      </button>
+                    <div class="form-group row">
+                      <label for="inputFile" id="lblFilePath" class="col-sm-7 col-form-label">Nenhum arquivo encontrado</label>
+                      <div class="col-sm-5 text-right">
+                        <button type="button" id="btnChooseFile"
+                          onclick="openCSVFile();"
+                          class="btn btn-custom text-uppercase">
+                          : : Escolher arquivo : :
+                        </button>
+                      </div>
                     </div>
                     <hr class="hr-divider">
-                    <div class="form-group d-flex justify-content-between align-items-center">
-                        <label for="inputTable">Nome da Tabela</label>
-                        <input type="text" id="inputTable" class="form-control col-sm-5" placeholder="TB_CLIENTES">
+                    <div class="form-group row">
+                        <label for="inputTable" class="col-sm-7 col-form-label">Nome da Tabela</label>
+                        <div class="col-sm-5">
+                          <input type="text" id="inputTable" class="form-control" placeholder="TB_CLIENTES">
+                        </div>
                     </div>
                   </div>
                   <div class="card-footer bg-card-footer text-center d-flex justify-content-between align-items-center">

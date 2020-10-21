@@ -7,3 +7,9 @@
 .modal-footer {
     border: none;
 }
+
+.spinner-border {
+    margin-top: 7px;
+    width: 50px;
+    height: 50px;
+}

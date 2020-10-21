@@ -96,12 +96,12 @@ function createFormWindow() {
     const rootPath = require('electron-root-path').rootPath;
 
     const formWindow = new BrowserWindow({
-        width: 500,
-        height: 510,
+        width: 600,
+        height: 400,
         center: true,
         frame: false,
         resizable: false,
-        icon: path.join(rootPath, 'src/assets/icon/icon.ico'),
+        icon: path.join(rootPath, 'src/assets/icon/icon_alt.ico'),
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true,

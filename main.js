@@ -14,7 +14,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     minWidth: 850,
     minHeight: 600,
-    icon: "src/assets/icon/icon.ico",
+    icon: "src/assets/icon/icon_alt.ico",
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
